@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <nav>
+        <h2>AI Project</h2>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About AI</a></li>
+            <li><a href="applications.html">Applications</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="quiz.html">Quiz</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Artificial Intelligence Quiz</h1>
+        <p>
+            Test your knowledge of Artificial Intelligence by answering
+            the following questions.
+        </p>
+    </div>
+</section>
+
+<section class="cards">
+
+```
+<div class="card">
+    <h3>1. What does AI stand for?</h3>
+
+    <button onclick="checkAnswer(this,true)">Artificial Intelligence</button>
+    <button onclick="checkAnswer(this,false,'Artificial Intelligence')">Automatic Internet</button>
+    <button onclick="checkAnswer(this,false,'Artificial Intelligence')">Advanced Information</button>
+
+    <p class="feedback"></p>
+</div>
+
+<div class="card">
+    <h3>2. Which technology allows computers to learn from data?</h3>
+
+    <button onclick="checkAnswer(this,false,'Machine Learning')">Web Design</button>
+    <button onclick="checkAnswer(this,true)">Machine Learning</button>
+    <button onclick="checkAnswer(this,false,'Machine Learning')">Graphic Design</button>
+
+    <p class="feedback"></p>
+</div>
+
+<div class="card">
+    <h3>3. AI is commonly used in:</h3>
+
+    <button onclick="checkAnswer(this,false,'Healthcare, Education and more')">Only Gaming</button>
+    <button onclick="checkAnswer(this,false,'Healthcare, Education and more')">Only Schools</button>
+    <button onclick="checkAnswer(this,true)">Healthcare, Education and more</button>
+
+    <p class="feedback"></p>
+</div>
+
+<div class="card">
+    <h3>4. Which is a career related to AI?</h3>
+
+    <button onclick="checkAnswer(this,true)">Data Scientist</button>
+    <button onclick="checkAnswer(this,false,'Data Scientist')">Chef</button>
+    <button onclick="checkAnswer(this,false,'Data Scientist')">Bus Driver</button>
+
+    <p class="feedback"></p>
+</div>
+
+<div class="card">
+    <h3>5. AI can help in:</h3>
+
+    <button onclick="checkAnswer(this,true)">Problem Solving</button>
+    <button onclick="checkAnswer(this,false,'Problem Solving')">Nothing</button>
+    <button onclick="checkAnswer(this,false,'Problem Solving')">Only Sports</button>
+
+    <p class="feedback"></p>
+</div>
+```
+
+</section>
+
+<div style="text-align:center; margin-bottom:60px;">
+    <h2 id="score">Score: 0 / 5</h2>
+</div>
+
+<footer>
+    <p>Class X Artificial Intelligence Project | Quiz</p>
+</footer>
+
+<script>
+
+let score = 0;
+
+function checkAnswer(button, correct, answer = "") {
+
+    const card = button.parentElement;
+
+    if(card.dataset.answered){
+        return;
+    }
+
+    card.dataset.answered = "true";
+
+    const feedback = card.querySelector(".feedback");
+
+    if(correct){
+        score++;
+        feedback.innerHTML = "✅ Correct Answer!";
+        feedback.style.color = "green";
+    }
+    else{
+        feedback.innerHTML = "❌ Wrong Answer! Correct Answer: " + answer;
+        feedback.style.color = "red";
+    }
+
+    document.getElementById("score").innerHTML =
+    "Score: " + score + " / 5";
+}
+
+</script>
+
+<script src="script.js"></script>
+</body>
+</html>
